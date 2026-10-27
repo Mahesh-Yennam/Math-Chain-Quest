@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RFQ8M0VSFN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-RFQ8M0VSFN');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Math Chain Quest — Doubling & Multiplication Arcade | Gamility</title>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Play Math Chain Quest! Climb glowing energy chains by doubling numbers (4+4=8 ➔ 8+8=16 ➔ 32), progressive multiplication tables, and reverse halving with 4 tactile choice cards!">
+  <meta name="keywords" content="math chain quest, doubling math game, multiplication game, mental math arcade, math runner, gamility games">
+  <meta name="author" content="Gamility">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://mahesh-yennam.github.io/Gamility/games/math-chain-quest/index.html">
+
+  <!-- OpenGraph -->
+
+  <!-- Favicon & PWA -->
+    <!-- Open Graph / Social Sharing -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Math Chain Quest — Doubling & Multiplication Arcade | Gamility">
+  <meta property="og:description" content="Play Math Chain Quest! Climb glowing energy chains by doubling numbers (4+4=8 ➔ 8+8=16 ➔ 32), progressive multiplication tables, and reverse halving with 4 tactile choice cards!">
+  <meta property="og:image" content="preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:alt" content="Math Chain Quest — Doubling & Multiplication Arcade | Gamility">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Math Chain Quest — Doubling & Multiplication Arcade | Gamility">
+  <meta name="twitter:description" content="Play Math Chain Quest! Climb glowing energy chains by doubling numbers (4+4=8 ➔ 8+8=16 ➔ 32), progressive multiplication tables, and reverse halving with 4 tactile choice cards!">
+  <meta name="twitter:image" content="preview.png">
+
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#0284c7">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- =========================================================================
+       TOP GAMILITY RETURN RIBBON
+       ========================================================================= -->
+  <header class="top-nav-ribbon" role="banner">
+    <div class="ribbon-container">
+      <div class="ribbon-left">
+        <a href="https://mahesh-yennam.github.io/Gamility/" class="ribbon-brand" title="Gamility Home" aria-label="Gamility Home">
+          <svg width="22" height="22" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+            <path d="M20 4L4 12V28L20 36L36 28V12L20 4Z" stroke="#06b6d4" stroke-width="2.5" stroke-linejoin="round"/>
+            <path d="M20 12L12 16V24L20 28L28 24V16L20 12Z" fill="#3b82f6" fill-opacity="0.85"/>
+            <circle cx="20" cy="20" r="3" fill="#ffffff"/>
+          </svg>
+          <span class="brand-name">Gamility</span>
+          <span class="brand-badge">Math</span>
+        </a>
+      </div>
+      <div class="ribbon-right">
+        <button type="button" class="btn-ribbon-icon" id="btnToggleAudio" aria-label="Toggle Sound" title="Toggle Sound">
+          <span id="audioIcon">🔊</span>
+        </button>
+        <a href="https://mahesh-yennam.github.io/Gamility/games.html" class="ribbon-back-btn" title="Back to All Games">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+          <span>Back to Games</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       MAIN ARCADE WRAPPER & PLAYROOM VIEWPORT
+       ========================================================================= -->
+  <main class="arcade-wrapper">
+    <div class="game-viewport" id="gameViewport">
+      
+      <!-- Top Playroom Toolbar: Mode & Difficulty -->
+      <nav class="playroom-controls-bar">
+        <!-- Mode Switcher: Double ×2 vs Multiply vs Half ÷2 -->
+        <div class="control-segment-pill" role="tablist" aria-label="Math Chain Mode">
+          <button type="button" class="btn-pill-mode active" id="btnModeDouble" title="Double the number (×2)">
+            <span>⚡ Double ×2</span>
+          </button>
+          <button type="button" class="btn-pill-mode" id="btnModeMulti" title="Multiplication chain (×3, ×5, ×10)">
+            <span>✖️ Multi</span>
+          </button>
+          <button type="button" class="btn-pill-mode" id="btnModeHalf" title="Halving chain (÷2)">
+            <span>➗ Half ÷2</span>
+          </button>
+        </div>
+
+        <!-- Difficulty Tier Switcher -->
+        <div class="control-tier-group" aria-label="Difficulty Tier">
+          <button type="button" class="btn-tier active" data-tier="1" id="btnTier1" title="Starter (Easy)">Easy</button>
+          <button type="button" class="btn-tier" data-tier="2" id="btnTier2" title="Apprentice (Medium)">Med</button>
+          <button type="button" class="btn-tier" data-tier="3" id="btnTier3" title="Math Master (Hard)">Hard</button>
+        </div>
+      </nav>
+
+      <!-- Sub-Bar: Stats & Lives -->
+      <div class="playroom-stats-bar">
+        <!-- Chain Progress -->
+        <div class="stat-group">
+          <span class="stat-lbl">CHAIN RUN</span>
+          <span class="stat-val" id="hudChainProgress">Link <strong id="currentLinkText">1</strong>/<span id="totalLinksText">5</span></span>
+        </div>
+
+        <!-- Hearts / Energy Lives -->
+        <div class="stat-group lives-group">
+          <span class="stat-lbl">ENERGY</span>
+          <div class="hearts-container" id="heartsContainer" aria-label="Energy lives left">
+            <span class="heart-icon active" id="heart1">❤️</span>
+            <span class="heart-icon active" id="heart2">❤️</span>
+            <span class="heart-icon active" id="heart3">❤️</span>
+          </div>
+        </div>
+
+        <!-- Score & Streak -->
+        <div class="stat-group score-group">
+          <span class="stat-lbl">SCORE</span>
+          <div class="score-display">
+            <span class="stat-val score-val" id="hudScore">0</span>
+            <span class="streak-badge" id="hudStreakBadge" style="display: none;">3🔥</span>
+          </div>
+        </div>
+
+        <!-- Best Score -->
+        <div class="stat-group best-group">
+          <span class="stat-lbl">BEST</span>
+          <span class="stat-val best-val" id="hudBestScore">0</span>
+        </div>
+      </div>
+
+      <!-- Playroom Background Wallpaper Atmosphere -->
+      <div class="playroom-ambient-bg" aria-hidden="true">
+        <div class="wallpaper-grid"></div>
+      </div>
+
+      <!-- Active Math Energy Stage -->
+      <section class="math-stage-area" id="mathStageArea">
+
+        <!-- Visual Plasma Chain Ladder -->
+        <div class="chain-ladder-track" id="chainLadderTrack" aria-label="Energy Chain Ladder">
+          <!-- Dynamic Chain Nodes Injected Here -->
+        </div>
+
+        <!-- Current Challenge Equation Card -->
+        <div class="equation-challenge-card" id="equationChallengeCard">
+          <div class="mode-badge-icon" id="modeBadgeIcon">⚡</div>
+          <div class="equation-box">
+            <span class="equation-subtext" id="equationSubtext">DOUBLE THIS NUMBER:</span>
+            <div class="equation-display">
+              <span class="eq-term" id="eqTerm1">14</span>
+              <span class="eq-op" id="eqOp">+</span>
+              <span class="eq-term" id="eqTerm2">14</span>
+              <span class="eq-equal">=</span>
+              <span class="eq-target" id="eqTarget">?</span>
+            </div>
+            <span class="equation-hint" id="equationHint">Or: 14 × 2 = ?</span>
+          </div>
+        </div>
+
+        <!-- Feedback & Guidance Banner -->
+        <div class="feedback-banner" id="feedbackBanner">
+          <span class="feedback-text" id="feedbackText">Choose the correct answer below!</span>
+        </div>
+
+      </section>
+
+      <!-- Bottom Choice Cards Deck -->
+      <footer class="choice-deck-container" id="choiceDeckContainer">
+        <div class="choice-cards-grid" id="choiceCardsGrid">
+          <!-- 4 Multiple Choice Cards -->
+          <button type="button" class="choice-card" id="choiceCard0" data-index="0">
+            <span class="key-hint">1</span>
+            <span class="choice-number" id="choiceNum0">24</span>
+          </button>
+          <button type="button" class="choice-card" id="choiceCard1" data-index="1">
+            <span class="key-hint">2</span>
+            <span class="choice-number" id="choiceNum1">28</span>
+          </button>
+          <button type="button" class="choice-card" id="choiceCard2" data-index="2">
+            <span class="key-hint">3</span>
+            <span class="choice-number" id="choiceNum2">32</span>
+          </button>
+          <button type="button" class="choice-card" id="choiceCard3" data-index="3">
+            <span class="key-hint">4</span>
+            <span class="choice-number" id="choiceNum3">26</span>
+          </button>
+        </div>
+      </footer>
+
+      <!-- Visual FX Overlay (Sparks & Confetti) -->
+      <div class="fx-overlay" id="fxOverlay" aria-hidden="true"></div>
+
+      <!-- =========================================================================
+           OVERLAYS & MODALS
+           ========================================================================= -->
+
+      <!-- Welcome / Start Modal -->
+      <div class="game-overlay-modal start-overlay" id="startOverlay">
+        <div class="overlay-card">
+          <div class="overlay-icon-badge">
+            <span class="animated-icon">⚡</span>
+          </div>
+          <h1 class="overlay-title">MATH CHAIN QUEST!</h1>
+          <p class="overlay-tagline">Climb the glowing plasma chain! Double numbers (4+4=8 ➔ 16 ➔ 32), solve progressive multiplication tables, and reach the energy summit!</p>
+
+          <div class="mode-selection-preview">
+            <div class="mode-card-btn active" id="modalSelectDouble">
+              <span class="m-icon">⚡</span>
+              <span class="m-title">Double (×2)</span>
+              <span class="m-desc">4 ➔ 8 ➔ 16 ➔ 32</span>
+            </div>
+            <div class="mode-card-btn" id="modalSelectMulti">
+              <span class="m-icon">✖️</span>
+              <span class="m-title">Multiply</span>
+              <span class="m-desc">Tables ×3, ×5, ×10</span>
+            </div>
+            <div class="mode-card-btn" id="modalSelectHalf">
+              <span class="m-icon">➗</span>
+              <span class="m-title">Half (÷2)</span>
+              <span class="m-desc">64 ➔ 32 ➔ 16 ➔ 8</span>
+            </div>
+          </div>
+
+          <div class="features-pill-row">
+            <span class="feature-tag">🚀 4 Fast Tap Cards</span>
+            <span class="feature-tag">⌨️ Keys 1, 2, 3, 4</span>
+            <span class="feature-tag">🏆 Summit Rewards</span>
+          </div>
+
+          <button type="button" class="btn-play-primary" id="btnStartGame">
+            <span>Start Math Chain ▶</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Summit Victory Celebration Modal -->
+      <div class="game-overlay-modal victory-overlay" id="victoryOverlay" style="display: none;">
+        <div class="overlay-card victory-card">
+          <div class="overlay-icon-badge victory-badge">
+            <span class="animated-icon">🏆</span>
+          </div>
+          <h2 class="overlay-title">SUMMIT REACHED!</h2>
+          <p class="overlay-tagline" id="victoryTagline">Incredible mental math! You conquered the full chain!</p>
+
+          <div class="gameover-score-banner">
+            <div class="score-col">
+              <span class="col-lbl">CHAIN SCORE</span>
+              <span class="col-val" id="victoryScore">650</span>
+            </div>
+            <div class="score-divider"></div>
+            <div class="score-col">
+              <span class="col-lbl">BEST RECORD</span>
+              <span class="col-val highlight-gold" id="victoryBestScore">650</span>
+            </div>
+          </div>
+
+          <div class="gameover-stats-grid">
+            <div class="stat-card">
+              <span class="card-icon">⚡</span>
+              <span class="card-val" id="victoryLinksClimbed">5</span>
+              <span class="card-label">Links Climbed</span>
+            </div>
+            <div class="stat-card">
+              <span class="card-icon">🔥</span>
+              <span class="card-val" id="victoryMaxStreak">5</span>
+              <span class="card-label">Best Streak</span>
+            </div>
+            <div class="stat-card">
+              <span class="card-icon">❤️</span>
+              <span class="card-val" id="victoryLivesLeft">3/3</span>
+              <span class="card-label">Energy Left</span>
+            </div>
+          </div>
+
+          <div class="overlay-actions">
+            <button type="button" class="btn-play-primary" id="btnNextChain">
+              <span>Next Chain Run ⚡</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- JavaScript -->
+  <script src="game.js"></script>
+</body>
+</html>
